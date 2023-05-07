@@ -15,6 +15,4 @@ body{
 
 .pixel{
     outline: 1px solid lightgray;
-    height: 25px;
-    width: 25px;
     flex-wrap: wrap;}
