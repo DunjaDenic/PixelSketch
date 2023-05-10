@@ -7,9 +7,30 @@
 </head>
 <body onload="initialize()">
     <h1 align="center">Pixel sketch!</h1>
-    <div id="canvas"></div>
+    <div id="main-content">
+        <div id="colors" class="side-panel">
+            <div class="color" id="#ff0000"></div>
+            <div class="color" id="#ff9000"></div>
+            <div class="color" id="#ffff00"></div>
+            <div class="color" id="#90ff00"></div>
+            <div class="color" id="#009090"></div>
+            <div class="color" id="#0000ff"></div>
+            <div class="color" id="#622dd1"></div>
+            <div class="color" id="#900090"></div>
+            <div class="color" id="#0c0c0c"></div>
+            <div class="color" id="#F5F5DC"></div>
+            <div class="color pick-color"></div>
+        </div>
+        <div id="canvas"></div>
+        <div id="size-presets" class="side-panel">
+            <button class="size">S</button>
+            <button class="size">M</button>
+            <button class="size">L</button>
+            <button class="size">XL</button>
+            <input type="number" id="numbox" value="16" min="12" max="100">
+        </div>
+    </div>
     <button id="clear-button">clear</button>
-    <input type="number" id="numbox" value="16" min="12" max="100">
 <script src="script.js"></script>
 </body>
 </html>

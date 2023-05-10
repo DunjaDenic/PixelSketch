@@ -5,7 +5,7 @@ function initialize(){
     var canvasSizePseudoPixels=16;
     //width and height of pixel elements in actual pixels
     var pixelSize=canvasSizePixels/canvasSizePseudoPixels;
-    
+    generateColors();
     
     const canvas = document.querySelector("#canvas");
     createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
@@ -17,7 +17,11 @@ function initialize(){
     numBox.addEventListener("change", () =>{
         canvasSizePseudoPixels=numBox.value;
         pixelSize=canvasSizePixels/canvasSizePseudoPixels;
-        createCanvas(canvas, canvasSizePseudoPixels, pixelSize);})   
+        createCanvas(canvas, canvasSizePseudoPixels, pixelSize);})
+    
+    const pixels=document.querySelectorAll(".pixel");
+    pixels.forEach((pixel)=>{pixel.addEventListener("mouseover", function (e) {
+                                                    color(e.target, penColor);});})
 }
 
 function createCanvas(canvas, canvasSizePseudoPixels, pixelSize){
@@ -28,15 +32,21 @@ function createCanvas(canvas, canvasSizePseudoPixels, pixelSize){
         const pixel = document.createElement("div");
         pixel.classList.add("pixel");
         canvas.appendChild(pixel);
-        pixel.addEventListener("mouseover", function (e) {color(e.target);});
         pixel.style.height=`${pixelSize}px`; 
         pixel.style.width=`${pixelSize}px`;}}
 
-function color(thisPixel){
-    thisPixel.style.backgroundColor="blue";}
+function color(thisPixel, penColor){
+    thisPixel.style.backgroundColor=penColor}
 
 function clearCanvas() {
     const pixels=document.querySelectorAll(".pixel");
     pixels.forEach(pixel=>{pixel.style.backgroundColor="white";})}
 
+function generateColors(){
+    const colorDivs=document.querySelectorAll(".color");
+    colorDivs.forEach((div)=>{div.style.backgroundColor=div.id})
+}
+
+
 //ADD PREVENT RELOAD LATER
+//ADD TOGGLE GRID BUTTON
