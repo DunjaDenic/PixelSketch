@@ -71,5 +71,4 @@ input[type=number] {
 .pixel{
     outline: 1px solid lightgray;}
 
-.current-color{
-    background-color: navajowhite;}
+#warning(display:inlin)
