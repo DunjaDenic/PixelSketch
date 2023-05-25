@@ -1,11 +1,12 @@
-function initialize(){
+function main(){
     //width and height of the canvas in actual pixels
-    const canvasSizePixels=400;
+    const canvasSizePixels=450;
     //width and height of the canvas in pixel elements
-    var canvasSizePseudoPixels=16;
+    var canvasSizePseudoPixels=18;
     //width and height of pixel elements in actual pixels
     var pixelSize=canvasSizePixels/canvasSizePseudoPixels;
-    var penColor="blue";
+    var canvasColor="white";
+    var penColor="#ff595e";
     
     const canvas = document.querySelector("#canvas");
     createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
@@ -15,8 +16,8 @@ function initialize(){
     const btnClear=document.querySelector("#clear-button");
     btnClear.addEventListener("click", clearCanvas);
     
-    const sizeButtons=document.querySelectorAll(".size");
-    sizeButtons.forEach((button)=>{button.addEventListener("click", (e) => {
+    const sizePresetBtns=document.querySelectorAll(".size-preset");
+    sizePresetBtns.forEach(button=>{button.addEventListener("click", () => {
         canvasSizePseudoPixels=button.value;
         pixelSize=canvasSizePixels/canvasSizePseudoPixels;
         createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
@@ -33,6 +34,13 @@ function initialize(){
             const warningDiv=document.querySelector("#warning");
             warningDiv.textContent="Enter a size between 5 and 100!";}})
     
+    const colorDivs=document.querySelectorAll(".color");
+    colorDivs.forEach(color=>{color.addEventListener("click", ()=>{
+        if (color.id=="eraser"){
+            penColor=canvasColor;}
+        else{
+            penColor=color.id;}
+        preparePixels(penColor);})});
 }
 
 function createCanvas(canvas, canvasSizePseudoPixels, pixelSize){
@@ -47,7 +55,11 @@ function createCanvas(canvas, canvasSizePseudoPixels, pixelSize){
         pixel.style.width=`${pixelSize}px`;}}
 
 function color(thisPixel, penColor){
-    thisPixel.style.backgroundColor=penColor}
+    if (penColor!="rainbow"){
+        thisPixel.style.backgroundColor=penColor}
+    else{
+        thisPixel.style.backgroundColor=`hsl(${getRandomHue()}, 100%, 67%)`;
+    }}
 
 function clearCanvas() {
     const pixels=document.querySelectorAll(".pixel");
@@ -61,6 +73,8 @@ function preparePixels(penColor){
     const pixels=document.querySelectorAll(".pixel");
     pixels.forEach((pixel)=>{pixel.addEventListener("mouseover", (e) => {
                                                     color(e.target, penColor);});})}
+function getRandomHue(){
+    return (Math.floor(Math.random() * 357));}
 
 //ADD PREVENT RELOAD LATER
 //ADD TOGGLE GRID BUTTON

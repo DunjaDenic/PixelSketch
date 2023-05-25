@@ -5,28 +5,30 @@
 <link rel="stylesheet" href="style.css">
     <title>Pixel sketch</title>
 </head>
-<body onload="initialize()">
+<body onload="main()">
     <h1 align="center">Pixel sketch!</h1>
     <div id="main-content">
         <div id="colors" class="side-panel">
-            <div class="color" id="#ff0000"></div>
-            <div class="color" id="#ff9000"></div>
-            <div class="color" id="#ffff00"></div>
-            <div class="color" id="#90ff00"></div>
-            <div class="color" id="#009090"></div>
-            <div class="color" id="#0000ff"></div>
-            <div class="color" id="#622dd1"></div>
-            <div class="color" id="#900090"></div>
-            <div class="color" id="#0c0c0c"></div>
-            <div class="color" id="#F5F5DC"></div>
+            <div class="color" id="eraser">x</div>
+            <div class="color" id="rainbow"></div>
+            <div class="color" id="#ff595e"></div>
+            <div class="color" id="#ff924c"></div>
+            <div class="color" id="#ffca3a"></div>
+            <div class="color" id="#8ac926"></div>
+            <div class="color" id="#52a675"></div>
+            <div class="color" id="#1982c4"></div>
+            <div class="color" id="#4267ac"></div>
+            <div class="color" id="#6a4c93"></div>
+            <div class="color" id="#b5a6c9"></div>
+            <div class="color" id="#1c1b1c"></div>
             <div class="color pick-color"></div>
         </div>
         <div id="canvas"></div>
         <div id="size-presets" class="side-panel">
-            <button class="size" value="18">S</button>
-            <button class="size" value="25">M</button>
-            <button class="size" value="36">L</button>
-            <button class="size" value="50">XL</button>
+            <button class="size-preset" value="18">S</button>
+            <button class="size-preset" value="25">M</button>
+            <button class="size-preset" value="36">L</button>
+            <button class="size-preset" value="50">XL</button>
             <input type="number" id="numbox" value="18">
             <label for="numbox" id="warning"></label>
         </div>

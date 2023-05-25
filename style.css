@@ -33,7 +33,7 @@ input[type=number] {
 }
 .side-panel{
     display:flex;
-    max-height: 400px;
+    max-height: 450px;
     max-width: 140px;
     justify-content: center;
 }
@@ -43,17 +43,21 @@ input[type=number] {
     gap:18px;}
 
 .color{
-    background-color: blue;
     outline: 2px solid gray;
-    width:45px;
-    height:45px;
-    border-radius: 25%;}
+    width:44px;
+    height:44px;
+    border-radius: 22%;}
 .color:hover{
    outline: 3px solid white;}
 
+#eraser{
+}
+#rainbow{
+    background: linear-gradient(45deg, #f8ff6b, #ffdf60, #ffbe71, #ff9f92, #ff8cb8, #ff88dc, #cf8ef6, #7d95ff);
+}
 .pick-color{
     width:108px;
-    height:45px;
+    height:44px;
     border-radius: 14px;}   
 
 #size-presets{
@@ -65,10 +69,8 @@ input[type=number] {
 #canvas{
     background-color: white;
     display: flex;
-    flex: 0 0 400px;
+    flex: 0 0 450px;
     flex-wrap: wrap;}
 
 .pixel{
     outline: 1px solid lightgray;}
-
-#warning(display:inlin)
