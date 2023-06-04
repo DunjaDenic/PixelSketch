@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="style.css">
     <title>Pixel sketch</title>
+    <link rel="stylesheet" href="./coloris/coloris.min.css"/>
+    <script src="./coloris/coloris.min.js"></script>
 </head>
 <body onload="main()">
     <h1 align="center">Pixel sketch!</h1>
-    <div id="main-content">
+    
+    <div id="top-panel"><div id="toggle-grid">[toggle grid]</div></div>
+    <div id="main-content" class="unselectable">
         <div id="colors" class="side-panel">
-            <div class="color" id="eraser">x</div>
-            <div class="color" id="rainbow"></div>
             <div class="color" id="#ff595e"></div>
             <div class="color" id="#ff924c"></div>
             <div class="color" id="#ffca3a"></div>
@@ -21,15 +23,17 @@
             <div class="color" id="#6a4c93"></div>
             <div class="color" id="#b5a6c9"></div>
             <div class="color" id="#1c1b1c"></div>
-            <div class="color pick-color"></div>
+            <div class="color" id="eraser">x</div>
+            <div class="color" id="rainbow"></div>
+            <input type="text" data-coloris class="color color-picker" value="#bd6288">
         </div>
         <div id="canvas"></div>
         <div id="size-presets" class="side-panel">
-            <button class="size-preset" value="18">S</button>
-            <button class="size-preset" value="25">M</button>
-            <button class="size-preset" value="36">L</button>
-            <button class="size-preset" value="50">XL</button>
-            <input type="number" id="numbox" value="18">
+            <button class="size-preset" value="20">S</button>
+            <button class="size-preset" value="30">M</button>
+            <button class="size-preset" value="40">L</button>
+            <button class="size-preset" value="52">XL</button>
+            <input type="number" id="numbox" value="20">
             <label for="numbox" id="warning"></label>
         </div>
     </div>

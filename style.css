@@ -55,7 +55,7 @@ input[type=number] {
 #rainbow{
     background: linear-gradient(45deg, #f8ff6b, #ffdf60, #ffbe71, #ff9f92, #ff8cb8, #ff88dc, #cf8ef6, #7d95ff);
 }
-.pick-color{
+.color-picker{
     width:108px;
     height:44px;
     border-radius: 14px;}   
@@ -69,8 +69,17 @@ input[type=number] {
 #canvas{
     background-color: white;
     display: flex;
-    flex: 0 0 450px;
+    flex: 0 0 auto;
+    width:430px;
+    height:430px;
     flex-wrap: wrap;}
 
-.pixel{
-    outline: 1px solid lightgray;}
+.grid{
+    outline:1px solid lightgray;
+}
+.unselectable {
+        user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;}
