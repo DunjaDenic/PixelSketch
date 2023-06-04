@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body{
     text-align:center;
     background-color: #2f2c2c;
@@ -43,7 +46,7 @@ input[type=number] {
     gap:18px;}
 
 .color{
-    outline: 2px solid gray;
+    border: 2px solid gray;
     width:44px;
     height:44px;
     border-radius: 22%;}
@@ -75,7 +78,7 @@ input[type=number] {
     flex-wrap: wrap;}
 
 .grid{
-    outline:1px solid lightgray;
+    border:1px solid lightgray;
 }
 .unselectable {
         user-select: none;
