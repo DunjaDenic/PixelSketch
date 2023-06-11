@@ -1,5 +1,6 @@
 var mouseDown = false;
 var canvasColor = "white";
+var gridOn = false;
 
 function main() {
 	//width and height of the canvas in actual pixels
@@ -9,19 +10,18 @@ function main() {
 	//width and height of pixel elements in actual pixels
 	var pixelSize = canvasSizePixels / canvasSizePseudoPixels;
 	var penColor = "#ff595e";
-	var gridOn = false;
 
 	const canvas = document.querySelector("#canvas");
 	createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
 	preparePixels(penColor, mouseDown);
 	generateColors();
 
-	canvas.addEventListener("mousedown", (e) => {
+	document.addEventListener("mousedown", (e) => {
 		if (e.buttons == 1) {
 			mouseDown = true; } })
 
-	canvas.addEventListener("mouseup", (e) => {
-		mouseDown = false; })
+	document.addEventListener("mouseup", (e) => {
+        mouseDown = false; })
 
 	const sizePresetBtns = document.querySelectorAll(".size-preset");
 	sizePresetBtns.forEach(button => {
@@ -58,13 +58,12 @@ function main() {
 	Coloris({themeMode: 'dark', alpha: false })
 
 	const toggleGridBtn = document.querySelector("#toggle-grid");
-	toggleGridBtn.addEventListener("click", () => {
-		gridOn = toggleGrid(gridOn) })
+	toggleGridBtn.addEventListener("click", toggleGrid)
     
     const clearBtn = document.querySelector("#clear-button");
 	clearBtn.addEventListener("click", clearCanvas);
 
-	//prevent immediate reload
+	prevent immediate reload
 	window.addEventListener('beforeunload', (e) => {
 		e.preventDefault();
 		e.returnValue = ''; }); 
@@ -79,6 +78,9 @@ function createCanvas(canvas, canvasSizePseudoPixels, pixelSize) {
 		const pixel = document.createElement("div");
 		pixel.classList.add("pixel");
 		pixel.style.height = pixel.style.width = `${pixelSize}px`;
+        pixel.style.backgroundColor=canvasColor;
+        if(gridOn==true) {
+            pixel.classList.add("grid"); }
 		canvas.appendChild(pixel); } }
 
 function generateColors() {
@@ -89,9 +91,9 @@ function generateColors() {
 function preparePixels(penColor) {
 	const canvas = document.querySelector("#canvas");
 	const pixels = document.querySelectorAll(".pixel");
-	canvas.addEventListener("mouseover", (e) => {
+	pixels.forEach(pixel => {pixel.addEventListener("mouseover", (e) => {
 		if(mouseDown == true) {
-			color(e.target, penColor) } }); }
+			color(e.target, penColor); } }); }); }
 
 function color(thisPixel, penColor) {
 	if (penColor != "rainbow") {
@@ -107,7 +109,7 @@ function clearCanvas() {
 	pixels.forEach(pixel => {
 		pixel.style.backgroundColor = canvasColor; }) }
 
-function toggleGrid(gridOn) {
+function toggleGrid() {
 	const pixels = document.querySelectorAll(".pixel");
 	if (gridOn == false) {
 		pixels.forEach(pixel => {
@@ -116,6 +118,4 @@ function toggleGrid(gridOn) {
 	else {
 		pixels.forEach(pixel => {
 			pixel.classList.remove("grid") });
-		gridOn = false; }
-
-	return gridOn; }
+		gridOn = false; } }

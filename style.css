@@ -1,4 +1,5 @@
-/*--------------meyer-reset----------------*/
+/*----------------meyer-reset------------------*/
+/*https://meyerweb.com/eric/tools/css/reset/*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -18,52 +19,71 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-    box-sizing: border-box;
-}
+    box-sizing: border-box; }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
-}
+	display: block; }
 body {
-	line-height: 1;
-}
+	line-height: 1; }
 ol, ul {
-	list-style: none;
-}
+	list-style: none; }
 blockquote, q {
-	quotes: none;
-}
+	quotes: none; }
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
-	content: none;
-}
+	content: none; }
 table {
 	border-collapse: collapse;
-	border-spacing: 0;
-}
-/*-----------------------------------------*/
-body{
+	border-spacing: 0; }
+/*---------------------------------------------*/
+@font-face {
+    font-family: 'press_start_2pregular';
+    src: url('./fonts/pressstart2p-regular-webfont.woff2') format('woff2'),
+         url('./fonts/pressstart2p-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; }
+
+.theme-dark {
+    --background: #2e2e2e;
+    --light-yellow-accent: #FFE758; }
+
+.material-symbols-sharp {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 200,
+  'GRAD' 0,
+  'opsz' 48; }
+
+h1 {
+    font-family: "press_start_2pregular";
+    font-size: 2rem;
+    transform: scale(.77, 1);
+    display: inline-block;
+    text-shadow: 0.3rem 0.2rem black;
+    color: var(--light-yellow-accent);
+    margin: 1.3rem; }
+body {
     text-align:center;
-    background-color: #2f2c2c;
+    background-color: var(--background);
     color:white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-button{
+    align-items: center; }
+
+button {
     width:108px;
     height: 45px;
     border:none;
-    border-radius: 14px;}
+    border-radius: 14px; }
 
-input{ 
+input { 
     width:100px;
     height: 45px;
     border:none;
     border-radius: 14px;
-    text-align: center;}
+    text-align: center; }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -71,61 +91,61 @@ input::-webkit-inner-spin-button {
   margin: 0;}
 
 input[type=number] {
-  -moz-appearance: textfield;}
+  -moz-appearance: textfield; }
 
-#main-content{
+#main-content {
     display:flex;
-    justify-content: center;
-}
-.side-panel{
+    justify-content: center; }
+.side-panel {
     display:flex;
     max-height: 450px;
     max-width: 140px;
-    justify-content: center;
-}
-#colors{
+    justify-content: center; }
+#colors {
     align-content: center;
     flex-wrap: wrap;
-    gap:18px;}
+    gap:18px; }
 
-.color{
+.color {
     border: 2px solid gray;
     width:44px;
     height:44px;
     border-radius: 22%;}
-.color:hover{
-   outline: 3px solid white;}
+.color:hover {
+   outline: 3px solid white; }
 
 #eraser{
 }
-#rainbow{
-    background: linear-gradient(45deg, #f8ff6b, #ffdf60, #ffbe71, #ff9f92, #ff8cb8, #ff88dc, #cf8ef6, #7d95ff);
-}
-.color-picker{
+#rainbow {
+    background: linear-gradient(45deg, #f8ff6b, #ffdf60, #ffbe71, #ff9f92, #ff8cb8, #ff88dc, #cf8ef6, #7d95ff); }
+.color-picker {
     width:108px;
     height:44px;
-    border-radius: 14px;}   
+    border-radius: 14px; }   
 
-#size-presets{
+#size-presets {
     flex-direction: column;
     min-width: 140px;
     align-items: center;
-    gap:18px;}
+    gap:18px; } 
 
-#canvas{
+#canvas {
     background-color: white;
     display: flex;
     flex: 0 0 auto;
     width:430px;
     height:430px;
-    flex-wrap: wrap;}
+    flex-wrap: wrap; }
 
-.grid{
-    border:1px solid lightgray;
-}
+.grid {
+    float:left;
+    /*used box-shadow instead of border property because it's
+    impossible to achieve a 1px border due to border stacking*/
+    box-shadow: 0 0 0 1px lightgray; }
+
 .unselectable {
         user-select: none;
         -moz-user-select: none;
         -khtml-user-select: none;
         -webkit-user-select: none;
-        -o-user-select: none;}
+        -o-user-select: none; }
