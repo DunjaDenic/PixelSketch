@@ -1,12 +1,12 @@
 var mouseDown = false;
 var canvasColor = "white";
-var gridOn = false;
+var gridOn = true;
 
 function main() {
 	//width and height of the canvas in actual pixels
 	const canvasSizePixels = 430;
 	//width and height of the canvas in pixel elements
-	var canvasSizePseudoPixels = 18;
+	var canvasSizePseudoPixels = 24;
 	//width and height of pixel elements in actual pixels
 	var pixelSize = canvasSizePixels / canvasSizePseudoPixels;
 	var penColor = "#ff595e";
@@ -26,6 +26,9 @@ function main() {
 	const sizePresetBtns = document.querySelectorAll(".size-preset");
 	sizePresetBtns.forEach(button => {
 		button.addEventListener("click", () => {
+            //might be faster if a prevbutton var is added
+            sizePresetBtns.forEach(button =>{button.classList.remove("current-preset");})
+            button.classList.add("current-preset");
 			canvasSizePseudoPixels = button.value;
 			pixelSize = canvasSizePixels / canvasSizePseudoPixels;
 			createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
@@ -57,16 +60,18 @@ function main() {
 		preparePixels(penColor); });
 	Coloris({themeMode: 'dark', alpha: false })
 
-	const toggleGridBtn = document.querySelector("#toggle-grid");
-	toggleGridBtn.addEventListener("click", toggleGrid)
+    const gridOnBtn = document.querySelector("#grid-on");
+    const gridOffBtn = document.querySelector("#grid-off");
+	gridOnBtn.addEventListener("click", toggleGrid);
+    gridOffBtn.addEventListener("click", toggleGrid);
     
     const clearBtn = document.querySelector("#clear-button");
 	clearBtn.addEventListener("click", clearCanvas);
 
-	prevent immediate reload
-	window.addEventListener('beforeunload', (e) => {
+	//prevent immediate reload
+	/*window.addEventListener('beforeunload', (e) => {
 		e.preventDefault();
-		e.returnValue = ''; }); 
+		e.returnValue = ''; }); */
 }
 
 function createCanvas(canvas, canvasSizePseudoPixels, pixelSize) {
@@ -80,7 +85,7 @@ function createCanvas(canvas, canvasSizePseudoPixels, pixelSize) {
 		pixel.style.height = pixel.style.width = `${pixelSize}px`;
         pixel.style.backgroundColor=canvasColor;
         if(gridOn==true) {
-            pixel.classList.add("grid"); }
+            pixel.classList.add("grid");}
 		canvas.appendChild(pixel); } }
 
 function generateColors() {
@@ -99,7 +104,7 @@ function color(thisPixel, penColor) {
 	if (penColor != "rainbow") {
 		thisPixel.style.backgroundColor = penColor }
 	else {
-		thisPixel.style.backgroundColor = `hsl(${getRandomHue()}, 100%, 67% )`; } }
+		thisPixel.style.backgroundColor = `hsl(${getRandomHue()}, 85%, 65% )`; } }
 
 function getRandomHue() {
 	return (Math.floor(Math.random() * 357)); }
@@ -111,11 +116,18 @@ function clearCanvas() {
 
 function toggleGrid() {
 	const pixels = document.querySelectorAll(".pixel");
+    //this might work faster if icon elemeets are passed to this fn
+    const gridOnBtn = document.querySelector("#grid-on");
+    const gridOffBtn = document.querySelector("#grid-off");
 	if (gridOn == false) {
 		pixels.forEach(pixel => {
 			pixel.classList.add("grid") });
-		gridOn = true; }
+		gridOn = true;
+        gridOffBtn.classList.remove("display-none");
+        gridOnBtn.classList.add("display-none"); }
 	else {
 		pixels.forEach(pixel => {
 			pixel.classList.remove("grid") });
-		gridOn = false; } }
+		gridOn = false; 
+        gridOnBtn.classList.remove("display-none");
+        gridOffBtn.classList.add("display-none"); } }
