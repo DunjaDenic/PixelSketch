@@ -22,13 +22,15 @@ function main() {
 
 	document.addEventListener("mouseup", (e) => {
         mouseDown = false; })
-
+    
+    var previous=document.querySelector("#s");
 	const sizePresetBtns = document.querySelectorAll(".size-preset");
 	sizePresetBtns.forEach(button => {
 		button.addEventListener("click", () => {
-            //might be faster if a prevbutton var is added
-            sizePresetBtns.forEach(button =>{button.classList.remove("current-preset");})
+            previous.classList.remove("current-preset");
+            previous=button;
             button.classList.add("current-preset");
+            
 			canvasSizePseudoPixels = button.value;
 			pixelSize = canvasSizePixels / canvasSizePseudoPixels;
 			createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
@@ -62,16 +64,16 @@ function main() {
 
     const gridOnBtn = document.querySelector("#grid-on");
     const gridOffBtn = document.querySelector("#grid-off");
-	gridOnBtn.addEventListener("click", toggleGrid);
-    gridOffBtn.addEventListener("click", toggleGrid);
+	gridOnBtn.addEventListener("click", () => {toggleGrid(gridOnBtn, gridOffBtn)});
+    gridOffBtn.addEventListener("click", () => {toggleGrid(gridOnBtn, gridOffBtn)});
     
     const clearBtn = document.querySelector("#clear-button");
 	clearBtn.addEventListener("click", clearCanvas);
 
 	//prevent immediate reload
-	/*window.addEventListener('beforeunload', (e) => {
+	window.addEventListener('beforeunload', (e) => {
 		e.preventDefault();
-		e.returnValue = ''; }); */
+		e.returnValue = ''; }); 
 }
 
 function createCanvas(canvas, canvasSizePseudoPixels, pixelSize) {
@@ -114,11 +116,8 @@ function clearCanvas() {
 	pixels.forEach(pixel => {
 		pixel.style.backgroundColor = canvasColor; }) }
 
-function toggleGrid() {
+function toggleGrid(gridOnBtn, gridOffBtn) {
 	const pixels = document.querySelectorAll(".pixel");
-    //this might work faster if icon elemeets are passed to this fn
-    const gridOnBtn = document.querySelector("#grid-on");
-    const gridOffBtn = document.querySelector("#grid-off");
 	if (gridOn == false) {
 		pixels.forEach(pixel => {
 			pixel.classList.add("grid") });
