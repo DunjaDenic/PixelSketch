@@ -1,5 +1,4 @@
-/*----------------meyer-reset------------------*/
-/*https://meyerweb.com/eric/tools/css/reset/*/
+/*---https://meyerweb.com/eric/tools/css/reset/---*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -19,7 +18,6 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;}
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block; }
@@ -37,6 +35,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0; }
 /*---------------------------------------------*/
+*{ box-sizing: border-box; }
+
 @font-face {
     font-family: 'press_start_2pregular';
     src: url('./fonts/pressstart2p-regular-webfont.woff2') format('woff2'),
@@ -44,27 +44,28 @@ table {
     font-weight: normal;
     font-style: normal; }
 
+@font-face {
+    font-family: 'HalfBoldPixel-7';
+    src: url('./fonts/HalfBoldPixel-7.woff2') format('woff2'),
+        url('./fonts/HalfBoldPixel-7.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 .material-symbols-sharp {
   font-variation-settings:
-  'FILL' 0,
-  'wght' 200,
-  'GRAD' 0,
-  'opsz' 24; }
+  'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24; }
 
 .theme-dark {
     --background: #2e2e2e;
     --yellow-accent: #ea713c;
     --light-yellow-accent: #FFEBE2;
-    --lighter-gray: #d4d2d2;
     --glass: #FFFFFF21;}
 
-*{ box-sizing: border-box; }
-
 h1 {
-    font-family: "press_start_2pregular";
-    font-size: 2rem;
-    transform: scale(.77, 1);
-    display: inline-block;
+    font-family: "HalfBoldPixel-7";
+    font-size: 2.3rem;
     text-shadow: 0.3rem 0.2rem black;
     color: var(--yellow-accent);
     margin-top: 1.6rem;
@@ -100,10 +101,7 @@ div>.display-none {
     float:left;
     /*used box-shadow instead of border property because it's
     impossible to achieve a 1px border due to border stacking*/
-    box-shadow: 0 0 0 1px var(--lighter-gray); }
-
-.pixel {
-    aspect-ratio: 1; }
+    box-shadow: 0 0 0 1px lightgray; }
 
 #top-panel {
     text-align: right;
@@ -126,8 +124,7 @@ div>.display-none {
     min-width: 150px;
     justify-content: center; }
 .right{
-    transform: translateY(12px);
-}
+    transform: translateY(12px); }
 
 #colors {
     align-content: center;
@@ -159,6 +156,8 @@ div>.display-none {
     background-size: cover; }
 
 .color-picker {
+    font-family: "HalfBoldPixel-7";
+    font-size: 0.6rem;
     background-color: var(--glass);
     width:100px; /* 2 color width + gap width*/
     border-radius: 0.7rem;
@@ -178,29 +177,31 @@ div>.display-none {
 .small-text{
     word-spacing: -0.3rem;
     color:var(--yellow-accent);
-    font-family: "press_start_2pregular";
-    display:inline-block;
-    transform: scale(.77, 1);
-    font-size:0.72rem;}
+    font-family: "HalfBoldPixel-7";
+    font-size: 1rem;}
 
+#size-presets>.small-text {
+    word-spacing: -0.4rem;
+    margin-bottom: -0.7rem; }
+
+label.small-text{
+    display:inline-block;
+    margin-bottom: 0.3rem;
+}
 #size-presets {
     display: inherit;
     flex-direction: column;
     align-items: center;
     gap:16px; }
 
-#size-presets>.small-text {
-    word-spacing: -0.4rem;
-    margin-bottom:-0.9rem; }
-
 .size-preset {
     background-color: black;
     color:var(--yellow-accent);
     border: 3px solid var(--light-yellow-accent);
-    font-family: "press_start_2pregular";
-    font-size: 0.95rem;
+    font-family: "HalfBoldPixel-7";
+    font-size: 1.1rem;
     box-shadow: 0.3rem 0.2rem black;
-    width:100px; /* 2 color width + gap width - padding*/
+    width:100px; /* 2 color width + gap width*/
     height:42px;
     border-radius: 0.9rem; }
 .size-preset:hover {
@@ -220,10 +221,10 @@ div>.display-none {
     background-color: var(--glass);
     color:var(--light-yellow-accent);
     border: 3px solid var(--light-yellow-accent);
-    font-family: "press_start_2pregular";
-    font-size: 0.95rem;
+    font-family: "HalfBoldPixel-7";
+    font-size: 1.1rem;
     box-shadow: 0.3rem 0.2rem black;
-    width:100px; /* 2 color width + gap width - padding*/
+    width:100px; /* 2 color width + gap width*/
     height:42px;
     border-radius: 0.9rem;
     text-align: center;}
@@ -244,7 +245,6 @@ input[type=number] {
 .warning{
     font-family: sans-serif;
     color:indianred;
-    transform: none;
     word-spacing: normal;
     visibility: hidden;
     margin-top: 0.5rem;
@@ -253,23 +253,17 @@ input[type=number] {
     font-size: 0.75rem; 
     animation-name: fadeOut;}
 
-@keyframes fadeOut {
-   0% {opacity: 1;}
-   100% {opacity: 0;} 
-} 
-
 #clear-button{
     background-color:var(--yellow-accent);
     color: black;
-    font-family: "press_start_2pregular";
-    font-size: 0.8rem;
+    font-family: "HalfBoldPixel-7";
+    font-size: 1.1rem;
     box-shadow: 0.3rem 0.2rem black;
-    width:6.5rem; /* 2 color width + gap width - padding*/
-    height:2.1rem;
-    transform: scale(.77, 1);
+    width:90px; /* 2 color width + gap width*/
+    height:38px;
     border-radius: 0.9rem;
     border: 3px solid var(--light-yellow-accent);
-    margin-top: 1rem;}
+    margin-top: 1.5rem;}
 #clear-button:hover{
     border: 3px solid white;
     filter:brightness(110%);}
@@ -277,11 +271,11 @@ input[type=number] {
 @media screen and (max-width: 930px), 
        screen and (max-height: 620px) {
 h1 {
-    font-size: 1.75rem; }
+    font-size: 2rem; 
+    margin:0.7rem;}
 #canvas {
     max-width: 350px;
-    max-height: 350px; }
-           
+    max-height: 350px; }         
 .pixel { width: 14px;}
 #top-panel {
     max-width: 350px; }
@@ -294,32 +288,32 @@ h1 {
     width:38px;
     height:38px; }
 #eraser {
-    padding:0.1em; }       
+    padding:0.18em; }       
 .color-picker {
     width:86px; /* 2 color width + gap width*/
     height:38px;
-    font-size: 0.7rem;
-    padding-left: 0.4rem; }
+    font-size: 0.6rem;
+    padding-left: 0.2rem; }
 #sizes {
     gap:14px; } 
 .small-text{
-    word-spacing: -0rem;
-    font-size:0.75rem; }           
+    word-spacing: -0.4rem;
+    font-size:0.8rem; }           
 #size-presets>.small-text {
     word-spacing: -0.4rem;
     margin-bottom:-0.45rem; }          
 #size-presets {
     gap:10px; }
 .size-preset {
-    font-size: 0.8rem;
-    width:86px; /* 2 color width + gap width - padding*/
+    font-size: 1.1rem;
+    width:86px; /* 2 color width + gap width*/
     height:38px; }
 #custom-size {
-    font-size: 0.7rem;
+    font-size: 1.1rem;
     width:86px; /* 2 color width + gap width*/
     height:38px; }
 #clear-button{
+    font-size: 0.9rem;
     box-sizing: border-box;
-    width:110px; /* 2 color width + gap width*/
-    height:32px; }
-}   
+    width:90px; /* 2 color width + gap width*/
+    height:32px; } }   
