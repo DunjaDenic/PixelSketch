@@ -2,15 +2,17 @@ var mouseDown = false;
 var canvasColor = "white";
 var gridOn = true;
 
+
 function main() {
 	//width and height of the canvas in actual pixels
 	const canvasSizePixels = 430;
 	//width and height of the canvas in pixel elements
 	var canvasSizePseudoPixels = 24;
+    var lastCanvasSize = canvasSizePseudoPixels;
 	//width and height of pixel elements in actual pixels
 	var pixelSize = canvasSizePixels / canvasSizePseudoPixels;
 	var penColor = "#ff595e";
-
+    
 	const canvas = document.querySelector("#canvas");
 	createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
 	preparePixels(penColor, mouseDown);
@@ -32,16 +34,18 @@ function main() {
             button.classList.add("current-preset");
             
 			canvasSizePseudoPixels = button.value;
-			pixelSize = canvasSizePixels / canvasSizePseudoPixels;
-			createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
+            pixelSize = canvasSizePixels / canvasSizePseudoPixels;
+			lastCanvasSize = 
+                resizeCanvas(canvas, canvasSizePseudoPixels, lastCanvasSize, pixelSize);
 			preparePixels(penColor); }) })
     
     const customSize = document.querySelector("#custom-size");
 	customSize.addEventListener("change", () => {
 		if (customSize.value >= 5 && customSize.value <= 100) {
 			canvasSizePseudoPixels = customSize.value;
-			pixelSize = canvasSizePixels / canvasSizePseudoPixels;
-			createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
+            pixelSize = canvasSizePixels / canvasSizePseudoPixels;
+			lastCanvasSize = 
+                resizeCanvas(canvas, canvasSizePseudoPixels, lastCanvasSize, pixelSize);
 			preparePixels(penColor); }
 		else { //needs work
 			const warningDiv = document.querySelector("#warning");
@@ -77,11 +81,7 @@ function main() {
 }
 
 function createCanvas(canvas, canvasSizePseudoPixels, pixelSize) {
-	//clear existing pixels
-	while (canvas.firstChild) {
-		canvas.removeChild(canvas.lastChild); }
-	//create new pixels
-	for (var i = 0; i < (canvasSizePseudoPixels * canvasSizePseudoPixels); i++) {
+	for (var i = 0; i < canvasSizePseudoPixels * canvasSizePseudoPixels; i++) {
 		const pixel = document.createElement("div");
 		pixel.classList.add("pixel");
 		pixel.style.height = pixel.style.width = `${pixelSize}px`;
@@ -89,6 +89,26 @@ function createCanvas(canvas, canvasSizePseudoPixels, pixelSize) {
         if(gridOn==true) {
             pixel.classList.add("grid");}
 		canvas.appendChild(pixel); } }
+
+function resizeCanvas(canvas, newSize, oldSize, pixelSize) {
+    if (oldSize < newSize) {
+        var pixelsToAdd = (newSize * newSize) - (oldSize*oldSize);
+        for (var i = 0; i < pixelsToAdd; i++) {
+            const pixel = document.createElement("div");
+            pixel.classList.add("pixel");
+            pixel.style.backgroundColor=canvasColor;
+            canvas.appendChild(pixel); 
+            if(gridOn==true) {
+                pixel.classList.add("grid");} } }
+    else if (oldSize > newSize) {
+        var pixelsToRemove = (oldSize*oldSize)-(newSize * newSize);
+        for (var i = 0; i < pixelsToRemove; i++) {
+            canvas.removeChild(canvas.lastChild); } }  
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach(pixel =>{
+        pixel.style.height = pixel.style.width = `${pixelSize}px`; 
+        pixel.style.backgroundColor = canvasColor});
+    return newSize;}
 
 function generateColors() {
 	const colorDivs = document.querySelectorAll(".color");
