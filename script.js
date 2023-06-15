@@ -4,8 +4,11 @@ var gridOn = true;
 
 
 function main() {
-	//width and height of the canvas in actual pixels
-	const canvasSizePixels = 430;
+    const canvas = document.querySelector("#canvas");
+    const canvasStyle = getComputedStyle(canvas);
+    
+    //width and height of the canvas in actual pixels
+    var canvasSizePixels = parseInt(canvasStyle.maxWidth.replace('px', ''));
 	//width and height of the canvas in pixel elements
 	var canvasSizePseudoPixels = 24;
     var lastCanvasSize = canvasSizePseudoPixels;
@@ -13,16 +16,15 @@ function main() {
 	var pixelSize = canvasSizePixels / canvasSizePseudoPixels;
 	var penColor = "#ff595e";
     
-	const canvas = document.querySelector("#canvas");
 	createCanvas(canvas, canvasSizePseudoPixels, pixelSize);
 	preparePixels(penColor, mouseDown);
 	generateColors();
-
-	document.addEventListener("mousedown", (e) => {
+    
+	document.addEventListener("pointerdown", (e) => {
 		if (e.buttons == 1) {
 			mouseDown = true; } })
 
-	document.addEventListener("mouseup", (e) => {
+	document.addEventListener("pointerup", (e) => {
         mouseDown = false; })
     
     var previous=document.querySelector("#s");
@@ -41,6 +43,8 @@ function main() {
     
     const customSize = document.querySelector("#custom-size");
 	customSize.addEventListener("change", () => {
+        const warningDiv = document.querySelector(".warning");
+        warningDiv.style.visibility = "hidden";
 		if (customSize.value >= 5 && customSize.value <= 100) {
 			canvasSizePseudoPixels = customSize.value;
             pixelSize = canvasSizePixels / canvasSizePseudoPixels;
@@ -48,8 +52,7 @@ function main() {
                 resizeCanvas(canvas, canvasSizePseudoPixels, lastCanvasSize, pixelSize);
 			preparePixels(penColor); }
 		else { //needs work
-			const warningDiv = document.querySelector("#warning");
-			warningDiv.textContent = "Enter a size between 5 and 100!"; } })
+			warningDiv.style.visibility = "visible"; } })
 
 	const colorDivs = document.querySelectorAll(".color");
 	colorDivs.forEach(color => {

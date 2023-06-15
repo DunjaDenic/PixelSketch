@@ -15,7 +15,7 @@
         <div class="material-symbols-sharp toggle-grid" id="grid-off">grid_off</div>
     </div>
     <div id="main-content" class="unselectable">
-        <div id="colors" class="side-panel">
+        <div id="colors" class="side-panel left">
             <div class="color" id="#ff595e"></div>
             <div class="color" id="#ff924c"></div>
             <div class="color" id="#ffca3a"></div>
@@ -31,22 +31,24 @@
             <input type="text" data-coloris class="color color-picker" value="#c74167">
         </div>
         <div id="canvas"></div>
-        <div id="sizes" class="side-panel">
+        <div id="sizes" class="side-panel right">
             <div id="size-presets">
                 <span class="small-text">Pick a size:</span>
-                <button class="size-preset current-preset" value="24">S</button>
-                <button class="size-preset" value="32">M</button>
-                <button class="size-preset" value="52">L</button>
-                <button class="size-preset" value="70">XL</button>
+                <button id="s" class="size-preset current-preset" value="24">S</button>
+                <button id="m" class="size-preset" value="32">M</button>
+                <button id="l" class="size-preset" value="52">L</button>
+                <button id="xl" class="size-preset" value="70">XL</button>
             </div>
             <div>
                 <label for="custom-size" class="small-text">Custom size:</label>
                 <input type="number" id="custom-size" value="24">
-                <label class="small-text" for="custom-size" id="warning"></label>
+                <div class="small-text warning">Enter a size between 5 and 100!</div>
             </div>
         </div>
     </div>
     <button id="clear-button">clear</button>
+    
+    
 <script src="script.js"></script>
 </body>
 </html>
