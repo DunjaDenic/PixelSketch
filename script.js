@@ -5,10 +5,10 @@ var gridOn = true;
 
 function main() {
     const canvas = document.querySelector("#canvas");
-    const canvasStyle = getComputedStyle(canvas);
+    const cssCanvasSize = getComputedStyle(canvas).getPropertyValue("max-width");
     
     //width and height of the canvas in actual pixels
-    var canvasSizePixels = parseInt(canvasStyle.maxWidth.replace('px', ''));
+    var canvasSizePixels = parseInt(cssCanvasSize.replace('px', ''));
 	//width and height of the canvas in pixel elements
 	var canvasSizePseudoPixels = 24;
     var lastCanvasSize = canvasSizePseudoPixels;

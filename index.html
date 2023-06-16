@@ -1,54 +1,56 @@
 <!DOCTYPE html>
-<html lang=en>
+<html lang=en class="theme-dark" >
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <title>Pixel sketch</title>
     <link rel="stylesheet" href="./coloris/coloris.min.css"/>
     <script src="./coloris/coloris.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,200,0,0" />
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,200,0,0" />
 </head>
-<body onload="main()" class="theme-dark ">
-    <h1>Pixel sketch!</h1>
-    <div align="center" id="top-panel" class="unselectable">
-        <div class="material-symbols-sharp toggle-grid display-none" id="grid-on">grid_on</div>
-        <div class="material-symbols-sharp toggle-grid" id="grid-off">grid_off</div>
-    </div>
-    <div id="main-content" class="unselectable">
-        <div id="colors" class="side-panel left">
-            <div class="color" id="#ff595e"></div>
-            <div class="color" id="#ff924c"></div>
-            <div class="color" id="#ffca3a"></div>
-            <div class="color" id="#8ac926"></div>
-            <div class="color" id="#52a675"></div>
-            <div class="color" id="#1982c4"></div>
-            <div class="color" id="#4267ac"></div>
-            <div class="color" id="#6a4c93"></div>
-            <div class="color" id="#b5a6c9"></div>
-            <div class="color" id="#1c1b1c"></div>
-            <div class="color" id="rainbow"></div>
-            <div class="material-symbols-sharp color" id="eraser">ink_eraser</div>
-            <input type="text" data-coloris class="color color-picker" value="#c74167">
+<body onload="main()">
+    <div id="content">
+        <h1>Pixel sketch!</h1>
+        <div align="center" id="top-panel" class="unselectable">
+            <div class="material-symbols-sharp toggle-grid display-none" id="grid-on">grid_on</div>
+            <div class="material-symbols-sharp toggle-grid" id="grid-off">grid_off</div>
         </div>
-        <div id="canvas"></div>
-        <div id="sizes" class="side-panel right">
-            <div id="size-presets">
-                <span class="small-text">Pick a size:</span>
-                <button id="s" class="size-preset current-preset" value="24">S</button>
-                <button id="m" class="size-preset" value="32">M</button>
-                <button id="l" class="size-preset" value="52">L</button>
-                <button id="xl" class="size-preset" value="70">XL</button>
+        <div id="main-content" class="unselectable">
+            <div id="colors" class="side-panel left">
+                <div class="color" id="#ff595e"></div>
+                <div class="color" id="#ff924c"></div>
+                <div class="color" id="#ffca3a"></div>
+                <div class="color" id="#8ac926"></div>
+                <div class="color" id="#52a675"></div>
+                <div class="color" id="#1982c4"></div>
+                <div class="color" id="#4267ac"></div>
+                <div class="color" id="#6a4c93"></div>
+                <div class="color" id="#b5a6c9"></div>
+                <div class="color" id="#1c1b1c"></div>
+                <div class="color" id="rainbow"></div>
+                <div class="material-symbols-sharp color" id="eraser">ink_eraser</div>
+                <input type="text" data-coloris class="long-btn color color-picker" value="#c74167">
             </div>
-            <div>
-                <label for="custom-size" class="small-text">Custom size:</label>
-                <input type="number" id="custom-size" value="24">
-                <div class="small-text warning">Enter a size between 5 and 100!</div>
+            <div id="canvas"></div>
+            <div id="all-sizes" class="side-panel right">
+                <div id="size-presets">
+                    <span class="small-text">Pick a size:</span>
+                    <button id="s" class="size-preset current-preset long-btn" value="24">S</button>
+                    <button id="m" class="size-preset long-btn" value="32">M</button>
+                    <button id="l" class="size-preset long-btn" value="52">L</button>
+                    <button id="xl" class="size-preset long-btn" value="70">XL</button>
+                </div>
+                <div>
+                    <label for="custom-size" class="small-text">Custom size:</label>
+                    <input type="number" id="custom-size" class="long-btn custom-size" value="24">
+                    <div class="small-text warning">Enter a size between<br/>5 and 100 !</div>
+                </div>
             </div>
         </div>
+        <button id="clear-button">clear</button>
     </div>
-    <button id="clear-button">clear</button>
-    
-    
+        
+<footer><a href="https://github.com/DunjaDenic" target="_blank"><img src="./images/github-mark-white.svg" alt="github logo"/>DunjaDenic</a></footer>
 <script src="script.js"></script>
 </body>
 </html>
