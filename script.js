@@ -3,7 +3,7 @@ var canvasColor = "white";
 var gridOn = true;
 
 
-function main() {
+function initialize() {
     const canvas = document.querySelector("#canvas");
     const cssCanvasSize = getComputedStyle(canvas).getPropertyValue("max-width");
     
